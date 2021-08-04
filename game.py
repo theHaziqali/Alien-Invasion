@@ -2,7 +2,6 @@ import pygame
 from pygame.sprite import Group
 
 import game_functions as gf
-from Alienfile import Alien 
 from AlienShip import Ship
 from Settings import Settings
 
@@ -17,10 +16,13 @@ def run_game():
     ship=Ship(ai_settings,screen)
     # Make a group to store bullets in.
     bullets = Group()
-    alien=Alien(screen)
+    aliens = Group()
+   # alien=Alien(screen)
+    # Create the fleet of aliens.
+    gf.create_fleet(ai_settings, screen, aliens)
     #Alien(screen).blitme()
     #ship=Alien(screen)
-    #aln=Alien(screen)
+    #aln=Alien(screen)  
     
     # Set the background color.
     #bg_color = (170,40, 255)
@@ -32,7 +34,7 @@ def run_game():
         ship.update()
         gf.update_bullets(bullets)
               #print(len(bullets))
-        gf.update_screen(ai_settings,screen,ship,alien,bullets)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets)
 
 #----------------------------------MAIN--------------------------------------------------------------------------------#
 run_game()
