@@ -9,7 +9,8 @@ def check_events(ai_settings, screen, ship, bullets):
     """Respond to keypresses and mouse events."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:   
-            sys.exit()                           
+            sys.exit()          
+                             
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event, ai_settings, screen, ship, bullets)
         elif event.type == pygame.KEYUP:
