@@ -19,7 +19,7 @@ def run_game():
     aliens = Group()
    # alien=Alien(screen)
     # Create the fleet of aliens.
-    gf.create_fleet(ai_settings, screen, aliens)
+    gf.create_fleet(ai_settings, screen, ship,aliens)
     #Alien(screen).blitme()
     #ship=Alien(screen)
     #aln=Alien(screen)  
@@ -33,6 +33,7 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
+        gf.update_aliens(aliens)
               #print(len(bullets))
         gf.update_screen(ai_settings,screen,ship,aliens,bullets)
 
