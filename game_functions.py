@@ -55,9 +55,13 @@ def update_screen(ai_settings, screen, ship,aliens,bullets):
     # Make the most recently drawn screen visible.
     pygame.display.flip()
     
-def update_bullets(bullets):
+def update_bullets(aliens,bullets):
     """Update position of bullets and get rid of old bullets."""
+    # Check for any bullets that have hit aliens.
+    # If so, get rid of the bullet and the alien.
+    collisions = pygame.sprite.groupcollide(bullets, aliens, False, True)
     # Update bullet positions.
+    
     bullets.update()
     # Get rid of bullets that have disappeared.
     for bullet in bullets.copy():
@@ -103,6 +107,19 @@ def get_number_rows(ai_settings, ship_height, alien_height):
     available_space_y = (ai_settings.screen_height -(3 * alien_height) - ship_height)
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
-def update_aliens(aliens):
-    """Update the postions of all aliens in the fleet."""
+def update_aliens(ai_settings,aliens):
+    """Check if the fleet is at an edge,
+    and then update the postions of all aliens in the fleet."""
+    check_fleet_edges(ai_settings, aliens)
     aliens.update()
+def check_fleet_edges(ai_settings, aliens):
+    """Respond appropriately if any aliens have reached an edge."""
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_settings, aliens)
+            break
+def change_fleet_direction(ai_settings, aliens):
+    """Drop the entire fleet and change the fleet's direction."""
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+        ai_settings.fleet_direction *= -1
