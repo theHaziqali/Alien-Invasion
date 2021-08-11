@@ -4,6 +4,7 @@ from Alienfile import Alien
 import game_functions as gf
 from AlienShip import Ship
 from Settings import Settings
+from StatusBar import Status_Bar
 
 #global aln
 def run_game():
@@ -17,6 +18,7 @@ def run_game():
     ship=Ship(ai_settings,screen)
     # Make a group to store bullets in.
     bullets = Group()
+    Bar=Status_Bar(ai_settings, screen)
     #aliens = Group()
     aliens=Alien(ai_settings,screen)
     # Create the fleet of aliens.
@@ -34,9 +36,9 @@ def run_game():
        # screen.blit(background_image, [0, 0])
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        gf.update_bullets(aliens,bullets)            
+        gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar)
         gf.destroy_ship_closed_alien(aliens,ship)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
 run_game()

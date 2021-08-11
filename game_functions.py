@@ -4,7 +4,7 @@ import pygame
 import math
 from bullet import Bullet
 from Alienfile import Alien
-
+from StatusBar import Status_Bar
 
 def check_events(ai_settings, screen, ship, bullets):
     """Respond to keypresses and mouse events."""
@@ -42,12 +42,13 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
     ship.blitme()
     #aliens.draw(screen)
+    Status_Bar.draw_bar()
     aliens.blitme()
     # Redraw all bullets behind ship and aliens.
     for bullet in bullets.sprites():
@@ -56,7 +57,7 @@ def update_screen(ai_settings, screen, ship,aliens,bullets):
     # Make the most recently drawn screen visible.
     pygame.display.flip()
     
-def update_bullets(aliens,bullets):
+def update_bullets(aliens,bullets,Status_Bar,ai_settings):
     """Update position of bullets and get rid of old bullets."""
     # Check for any bullets that have hit aliens.
     # If so, get rid of the bullet and the alien.
@@ -68,6 +69,7 @@ def update_bullets(aliens,bullets):
         
 
         if(collison_bw_B_A(bullet,alien)):
+            #Status_Bar.x-=ai_settings.dmg_per_bullet
             alien.rect.x=alien.rect.y=-100
             #print("dead")
            
