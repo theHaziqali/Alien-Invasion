@@ -18,6 +18,9 @@ class Status_Bar():
         self.y=self.rect.top
         self.width=ai_settings.bar_width
         self.height=ai_settings.bar_height
+        self.dmg_bar_x=self.x
+        self.dmg_bar_y=self.y+2
+        self.dmg_taken=0
         #self.speed_factor = ai_settings.bullet_speed_factor
      def update(self):
         """Move the bullet up the screen."""
@@ -31,3 +34,4 @@ class Status_Bar():
         
         pygame.draw.rect(self.screen, self.color, (self.x,self.y,self.width,self.height))
         pygame.draw.rect(self.screen, (255,255,255), self.rect,4)
+        pygame.draw.rect(self.screen, (190, 110, 255), (self.x,self.dmg_bar_y,self.dmg_taken,self.height-4))

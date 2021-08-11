@@ -69,8 +69,10 @@ def update_bullets(aliens,bullets,Status_Bar,ai_settings):
         
 
         if(collison_bw_B_A(bullet,alien)):
-            #Status_Bar.x-=ai_settings.dmg_per_bullet
-            alien.rect.x=alien.rect.y=-100
+            if(Status_Bar.dmg_taken<(Status_Bar.width)):
+                Status_Bar.dmg_taken+=ai_settings.dmg_per_bullet
+            if(Status_Bar.dmg_taken>=(Status_Bar.width)):
+                alien.rect.x=alien.rect.y=-100
             #print("dead")
            
     #collisions = pygame.sprite.groupcollide(bullets, aliens, False, True)
