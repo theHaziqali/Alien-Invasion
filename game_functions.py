@@ -51,12 +51,15 @@ def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, tex
     #aliens.draw(screen)
     i=0
     for text in texts:
-        
         screen.blit(text, textRect[i])
         i+=1
+
+  
     Status_Bar.draw_bar()
     aliens.blitme()
     #creating lives icon on left of screen
+    
+        
     for i in range(ai_settings.lives):
         ships[i].blitme()
     # Redraw all bullets behind ship and aliens.
@@ -160,7 +163,8 @@ def collison(Alien,ship):
         return True
 def destroy_ship_closed_alien(Alien,ship,ai_setings):
         if collison(Alien,ship):
-            ship.center=ship.centery=-100
+            redraw_ship(ship)
+
             ai_setings.lives-=1
             #print("True")
 def number_of_life(ai_settings,screen,ships=None):
@@ -170,12 +174,10 @@ def number_of_life(ai_settings,screen,ships=None):
        ships.append(Ship(ai_settings,screen))
        ships[i].rect.centerx=40+i*70
        ships[i].rect.bottom = 580
-def text_on_Screen():
-    X = 400
-    Y = 400
-    display_surface = pygame.display.set_mode((X, Y))
-    font = pygame.font.Font('freesansbold.ttf', 32)
-    text = font.render('GeeksForGeeks', True, (0,0,0))
-    textRect = text.get_rect()
-    textRect.center = (X // 2, Y // 2)
-
+#def text_on_Screen():
+def redraw_ship(ship):
+    ship.rect.centerx = ship.screen_rect.centerx
+    ship.rect.bottom = ship.screen_rect.bottom
+            
+    ship.center = float(ship.rect.centerx)
+    ship.centery = float(ship.rect.centery)        

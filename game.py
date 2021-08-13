@@ -35,12 +35,14 @@ def run_game():
     font = pygame.font.Font('freesansbold.ttf', 22)
     text.append(font.render('Lives', True, (20,80,250)))
     text.append(font.render('Kankaro', True, (200, 00, 60)))
-    
+    text.append(font.render('Game Over', True, (200, 00, 60)))
     
     textRect.append(text[0].get_rect())
     textRect[0].center = (100,500)
     textRect.append(text[1].get_rect())
     textRect[1].center = (500,25)
+    textRect.append(text[2].get_rect())
+    textRect[2].center = (400,300)
     #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
