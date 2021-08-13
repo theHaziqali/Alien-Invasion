@@ -5,7 +5,7 @@ import game_functions as gf
 from AlienShip import Ship
 from Settings import Settings
 from StatusBar import Status_Bar
-
+pygame.init()
 #global aln
 def run_game():
     #pygame.init()
@@ -28,8 +28,20 @@ def run_game():
     #gf.create_fleet(ai_settings, screen, ship,aliens) 
     #Alien(screen).blitme()
     #ship=Alien(screen)
-    #aln=Alien(screen)  
+    #aln=Alien(screen) 
+    #intailize font in pygame (displaying text) 
+    text=[]
+    textRect=[]
+    font = pygame.font.Font('freesansbold.ttf', 22)
+    text.append(font.render('Lives', True, (20,80,250)))
+    text.append(font.render('Kankaro', True, (200, 00, 60)))
     
+    
+    textRect.append(text[0].get_rect())
+    textRect[0].center = (100,500)
+    textRect.append(text[1].get_rect())
+    textRect[1].center = (500,25)
+    #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
     #screen.fill(bg_color)
@@ -37,11 +49,15 @@ def run_game():
     while True:
     # Watch for keyboard and mouse events.
        # screen.blit(background_image, [0, 0])
+        
+
+        #gf.text_on_Screen()
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
+        #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
 run_game()

@@ -43,12 +43,17 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,ships=None):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
     ship.blitme()
     #aliens.draw(screen)
+    i=0
+    for text in texts:
+        
+        screen.blit(text, textRect[i])
+        i+=1
     Status_Bar.draw_bar()
     aliens.blitme()
     #creating lives icon on left of screen
@@ -165,3 +170,12 @@ def number_of_life(ai_settings,screen,ships=None):
        ships.append(Ship(ai_settings,screen))
        ships[i].rect.centerx=40+i*70
        ships[i].rect.bottom = 580
+def text_on_Screen():
+    X = 400
+    Y = 400
+    display_surface = pygame.display.set_mode((X, Y))
+    font = pygame.font.Font('freesansbold.ttf', 32)
+    text = font.render('GeeksForGeeks', True, (0,0,0))
+    textRect = text.get_rect()
+    textRect.center = (X // 2, Y // 2)
+
