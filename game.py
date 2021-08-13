@@ -21,6 +21,9 @@ def run_game():
     Bar=Status_Bar(ai_settings, screen)
     #aliens = Group()
     aliens=Alien(ai_settings,screen)
+    #creating life icons
+    ships=[]
+    gf.number_of_life(ai_settings,screen,ships)
     # Create the fleet of aliens.
     #gf.create_fleet(ai_settings, screen, ship,aliens) 
     #Alien(screen).blitme()
@@ -38,7 +41,7 @@ def run_game():
         ship.update()
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar)
-        gf.destroy_ship_closed_alien(aliens,ship)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,ships)
+        gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
 run_game()

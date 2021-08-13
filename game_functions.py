@@ -4,6 +4,7 @@ import pygame
 import math
 from bullet import Bullet
 from Alienfile import Alien
+from AlienShip import Ship
 from StatusBar import Status_Bar
 
 def check_events(ai_settings, screen, ship, bullets):
@@ -42,7 +43,7 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
@@ -50,6 +51,9 @@ def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar):
     #aliens.draw(screen)
     Status_Bar.draw_bar()
     aliens.blitme()
+    #creating lives icon on left of screen
+    for i in range(ai_settings.lives):
+        ships[i].blitme()
     # Redraw all bullets behind ship and aliens.
     for bullet in bullets.sprites():
         bullet.draw_bullet()
@@ -149,7 +153,15 @@ def collison(Alien,ship):
     pixel=100
     if(Alien.rect.x<=ship.rect.x+pixel)and(Alien.rect.x>=ship.rect.x-pixel)and((Alien.rect.y<=ship.rect.y+pixel)and(Alien.rect.y>=ship.rect.y-pixel)):
         return True
-def destroy_ship_closed_alien(Alien,ship):
+def destroy_ship_closed_alien(Alien,ship,ai_setings):
         if collison(Alien,ship):
             ship.center=ship.centery=-100
+            ai_setings.lives-=1
             #print("True")
+def number_of_life(ai_settings,screen,ships=None):
+    if ships is None:
+        ships=[]
+    for i in range(ai_settings.lives):
+       ships.append(Ship(ai_settings,screen))
+       ships[i].rect.centerx=40+i*70
+       ships[i].rect.bottom = 580

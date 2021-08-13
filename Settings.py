@@ -10,6 +10,8 @@ class Settings():
         
         #ship settings
         self.ship_speed_factor = 1.0
+        #number of lives
+        self.lives=3
         
         # Bullet settings
         self.bullet_speed_factor = 0.7
