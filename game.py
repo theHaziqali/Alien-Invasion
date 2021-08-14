@@ -6,6 +6,7 @@ from AlienShip import Ship
 from Settings import Settings
 from StatusBar import Status_Bar
 pygame.init()
+
 #global aln
 def run_game():
     #pygame.init()
@@ -24,6 +25,11 @@ def run_game():
     #creating life icons
     ships=[]
     gf.number_of_life(ai_settings,screen,ships)
+    #timerrrrrrrrrrrrrrr
+    clock = pygame.time.Clock()
+    counter, txt = 100, '100'.rjust(3)
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+    font = pygame.font.SysFont('Consolas', 30)
     # Create the fleet of aliens.
     #gf.create_fleet(ai_settings, screen, ship,aliens) 
     #Alien(screen).blitme()
@@ -40,9 +46,9 @@ def run_game():
     textRect.append(text[0].get_rect())
     textRect[0].center = (100,500)
     textRect.append(text[1].get_rect())
-    textRect[1].center = (500,25)
+    textRect[1].center = (600,25)
     textRect.append(text[2].get_rect())
-    textRect[2].center = (400,300)
+    textRect[2].center = (450,300)
     #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
@@ -52,13 +58,13 @@ def run_game():
     # Watch for keyboard and mouse events.
        # screen.blit(background_image, [0, 0])
         
-
+        
         #gf.text_on_Screen()
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,counter,txt,clock,font,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
         #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#

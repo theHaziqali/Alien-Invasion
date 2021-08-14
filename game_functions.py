@@ -43,7 +43,7 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,ships=None):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,counter,txt,clock,font,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
@@ -59,14 +59,22 @@ def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, tex
     aliens.blitme()
     #creating lives icon on left of screen
     
-        
+    f=font.render(txt, True, (0, 0, 0))
     for i in range(ai_settings.lives):
         ships[i].blitme()
     # Redraw all bullets behind ship and aliens.
     for bullet in bullets.sprites():
         bullet.draw_bullet()
-
-    # Make the most recently drawn screen visible.
+    """ for e in pygame.event.get():
+        if e.type == pygame.USEREVENT+1: 
+            counter -= 1
+            txt = str(counter).rjust(3) if counter > 0 else 'boom!'
+            #screen.fill((255, 255, 255))
+        #    screen.blit(f, (32, 48))
+            pygame.display.flip()
+            clock.tick(100)
+ """        
+        # Make the most recently drawn screen visible.
     pygame.display.flip()
     
 def update_bullets(aliens,bullets,Status_Bar,ai_settings):

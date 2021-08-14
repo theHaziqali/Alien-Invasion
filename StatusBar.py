@@ -9,12 +9,12 @@ class Status_Bar():
         # Create a bullet rect at (0, 0) and then set correct position.
         self.rect = pygame.Rect(0, 0, ai_settings.bar_width,
             ai_settings.bar_height)
-        self.rect.centerx = ai_settings.screen_width-300
+        self.rect.centerx = ai_settings.screen_width-200
         self.rect.top = 40
         # Store the bullet's position as a decimal value.
         self.y = float(self.rect.y)
         self.color = ai_settings.bar_color
-        self.x=ai_settings.screen_width-450
+        self.x=ai_settings.screen_width-350
         self.y=self.rect.top
         self.width=ai_settings.bar_width
         self.height=ai_settings.bar_height
