@@ -26,10 +26,8 @@ def run_game():
     ships=[]
     gf.number_of_life(ai_settings,screen,ships)
     #timerrrrrrrrrrrrrrr
-    clock = pygame.time.Clock()
-    counter, txt = 100, '100'.rjust(3)
-    pygame.time.set_timer(pygame.USEREVENT, 1000)
-    font = pygame.font.SysFont('Consolas', 30)
+    clock=pygame.time.Clock()
+    start=6000
     # Create the fleet of aliens.
     #gf.create_fleet(ai_settings, screen, ship,aliens) 
     #Alien(screen).blitme()
@@ -42,6 +40,7 @@ def run_game():
     text.append(font.render('Lives', True, (20,80,250)))
     text.append(font.render('Kankaro', True, (200, 00, 60)))
     text.append(font.render('Game Over', True, (200, 00, 60)))
+    text.append(font.render(str(start), True, (200, 00, 60)))
     
     textRect.append(text[0].get_rect())
     textRect[0].center = (100,500)
@@ -49,6 +48,8 @@ def run_game():
     textRect[1].center = (600,25)
     textRect.append(text[2].get_rect())
     textRect[2].center = (450,300)
+    textRect.append(text[3].get_rect())
+    textRect[3].center = (50,50)
     #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
@@ -64,7 +65,7 @@ def run_game():
         ship.update()
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,counter,txt,clock,font,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
         #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
