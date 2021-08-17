@@ -31,3 +31,6 @@ class Settings():
         self.bar_height = 15
         self.bar_color = 0, 140, 120
         #self.bullets_allowed = 3
+        
+        #fruit speed
+        self.fruit_speed=.1

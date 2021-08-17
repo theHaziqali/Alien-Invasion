@@ -1,3 +1,4 @@
+from Fruits import Fruits
 import pygame
 from pygame.sprite import Group
 from Alienfile import Alien
@@ -5,6 +6,7 @@ import game_functions as gf
 from AlienShip import Ship
 from Settings import Settings
 from StatusBar import Status_Bar
+from Fruits import Fruits
 pygame.init()
 
 #global aln
@@ -22,6 +24,7 @@ def run_game():
     Bar=Status_Bar(ai_settings, screen)
     #aliens = Group()
     aliens=Alien(ai_settings,screen)
+    fruit=Fruits(ai_settings,screen)
     #creating life icons
     ships=[]
     gf.number_of_life(ai_settings,screen,ships)
@@ -63,9 +66,10 @@ def run_game():
         #gf.text_on_Screen()
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
+        gf.update_fruits(fruit)
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
         #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#

@@ -43,11 +43,12 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,ships=None):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,fruit,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
     ship.blitme()
+    fruit.blitme()
     #aliens.draw(screen)
     i=0
     start-=1
@@ -191,3 +192,6 @@ def redraw_ship(ship):
             
     ship.center = float(ship.rect.centerx)
     ship.centery = float(ship.rect.centery)        
+
+def update_fruits(fruit):
+    fruit.update()
