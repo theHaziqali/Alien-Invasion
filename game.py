@@ -7,6 +7,8 @@ from AlienShip import Ship
 from Settings import Settings
 from StatusBar import Status_Bar
 from Fruits import Fruits
+from enemy_bullets import Enemy_Bullets
+import time
 pygame.init()
 
 #global aln
@@ -25,6 +27,7 @@ def run_game():
     #aliens = Group()
     aliens=Alien(ai_settings,screen)
     fruit=Fruits(ai_settings,screen)
+    enemy_bullet=Enemy_Bullets(ai_settings,screen,aliens)
     #creating life icons
     ships=[]
     gf.number_of_life(ai_settings,screen,ships)
@@ -53,6 +56,16 @@ def run_game():
     textRect[2].center = (450,300)
     textRect.append(text[3].get_rect())
     textRect[3].center = (50,50)
+    #Timerrrrrrrr
+    Ttime=90
+    Start_time=time.time()
+    T_text=[]
+    T_textRect=[]
+    for i in range(121):
+        k=str(i)    #number to string
+        T_text.append(font.render(k, True, (20,80,250)))
+        T_textRect.append(T_text[i].get_rect())
+        T_textRect[i].center = (450,30)
     #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
@@ -69,8 +82,11 @@ def run_game():
         gf.update_fruits(fruit)
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,enemy_bullet,Ttime,Start_time,T_text,T_textRect,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
+        gf.eating_food(fruit,ship)
+        gf.update_ebullets(enemy_bullet)
+        #gf.Timer(screen,Ttime,Start_time,T_text,T_textRect)
         #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
 run_game()

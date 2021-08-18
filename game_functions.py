@@ -6,6 +6,7 @@ from bullet import Bullet
 from Alienfile import Alien
 from AlienShip import Ship
 from StatusBar import Status_Bar
+import time
 
 def check_events(ai_settings, screen, ship, bullets):
     """Respond to keypresses and mouse events."""
@@ -43,19 +44,20 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,fruit,ships=None):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,fruit,enemy_bullets,Ttime,Start_time,T_texts,T_textRect,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
     # Make a ship.
     ship.blitme()
     fruit.blitme()
+    enemy_bullets.blitme()
     #aliens.draw(screen)
     i=0
     start-=1
     for text in texts:
         screen.blit(text, textRect[i])
         i+=1
-
+    i=0
   
     Status_Bar.draw_bar()
     aliens.blitme()
@@ -77,7 +79,7 @@ def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, tex
             clock.tick(100)
  """        
         # Make the most recently drawn screen visible.
-    
+    Timer(ai_settings,screen,Ttime,Start_time,T_texts,T_textRect)
     pygame.display.flip()
     
 def update_bullets(aliens,bullets,Status_Bar,ai_settings):
@@ -195,3 +197,195 @@ def redraw_ship(ship):
 
 def update_fruits(fruit):
     fruit.update()
+def update_ebullets(Enemy_bullets):
+    Enemy_bullets.update()
+def eating_food(fruit,ship):
+    pixel=30
+    if(fruit.rect.x<=ship.rect.x+pixel)and(fruit.rect.x>=ship.rect.x-pixel)and((fruit.rect.y<=ship.rect.y+pixel)and(fruit.rect.y>=ship.rect.y-pixel)):
+        fruit.rect.x=-100
+
+def Timer(ai_settings,screen,Ttime,Start_time,T_texts,T_textRect):
+    elapsed_time=time.time()-Start_time
+    Tim=ai_settings.Tim=Ttime-int(elapsed_time)
+    #print(Tim)
+    if(Tim==1):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+        #print("yello")
+    if(Tim==2):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==3):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==4):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==5):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==6):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==7):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==8):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==9):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==10):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==11):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==12):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==13):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==14):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==15):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==16):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==17):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==18):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==19):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==20):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==21):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==23):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==24):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==25):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==26):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==27):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==28):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==29):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==30):
+        screen.blit(T_texts[Tim], T_textRect[Tim]) 
+    if(Tim==31):
+        screen.blit(T_texts[Tim], T_textRect[Tim])   
+    if(Tim==32):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==33):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==34):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==35):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==36):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==37):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==38):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==39):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==40):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==41):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==42):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==43):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==44):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==45):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==46):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==47):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==48):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==49):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==50):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==51):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==52):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==53):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==54):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==55):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==56):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==57):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==58):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==59):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==60):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==61):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==62):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==63):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==64):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==65):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==66):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==67):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==68):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==69):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==70):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==71):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+        print("yello")
+    if(Tim==72):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==73):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==74):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==75):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==76):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==77):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==78):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==79):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==80):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==81):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+        print("yello")
+    if(Tim==82):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==83):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==84):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==85):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==86):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==87):
+            screen.blit(T_texts[Tim], T_textRect[Tim])        
+    if(Tim==88):
+        screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==89):
+            screen.blit(T_texts[Tim], T_textRect[Tim])
+    if(Tim==90):
+        screen.blit(T_texts[Tim], T_textRect[Tim])

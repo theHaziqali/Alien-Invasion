@@ -34,3 +34,7 @@ class Settings():
         
         #fruit speed
         self.fruit_speed=.1
+        #enemy bullet speed
+        self.ebullet=.1
+        #Timer
+        self.Tim=0
