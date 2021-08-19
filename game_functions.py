@@ -6,6 +6,7 @@ from bullet import Bullet
 from Alienfile import Alien
 from AlienShip import Ship
 from StatusBar import Status_Bar
+from Background import Background
 import time
 
 def check_events(ai_settings, screen, ship, bullets):
@@ -44,9 +45,10 @@ def check_keyup_events(event, ship):#keyReleased
     if event.key == pygame.K_DOWN:
         ship.moving_down= False
                 
-def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,fruit,enemy_bullets,Ttime,Start_time,T_texts,T_textRect,ships=None):
+def update_screen(ai_settings, screen, ship,aliens,bullets,Status_Bar,texts, textRect,start,fruit,enemy_bullets,Ttime,Start_time,T_texts,T_textRect,bg,ships=None):
     """Update images on the screen and flip to the new screen."""
     screen.fill(ai_settings.bg_color)
+    bg.blitme()
     # Make a ship.
     ship.blitme()
     fruit.blitme()
@@ -210,7 +212,7 @@ def Timer(ai_settings,screen,Ttime,Start_time,T_texts,T_textRect):
     #print(Tim)
     if(Tim==1):
         screen.blit(T_texts[Tim], T_textRect[Tim])
-        #print("yello")
+    
     if(Tim==2):
         screen.blit(T_texts[Tim], T_textRect[Tim])
     if(Tim==3):

@@ -8,6 +8,7 @@ from Settings import Settings
 from StatusBar import Status_Bar
 from Fruits import Fruits
 from enemy_bullets import Enemy_Bullets
+from Background import Background
 import time
 pygame.init()
 
@@ -19,6 +20,8 @@ def run_game():
    # background_image=pygame.image.load(("D:\VS code\.py code\Alien Game\Alien-Invasion\Images\bg.bmp")).convert()
     #screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Alien Invasion")
+    #BackGround
+    bg=Background(ai_settings,screen)
     # Make a ship
     ship=Ship(ai_settings,screen)
     # Make a group to store bullets in.
@@ -82,7 +85,7 @@ def run_game():
         gf.update_fruits(fruit)
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,enemy_bullet,Ttime,Start_time,T_text,T_textRect,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,enemy_bullet,Ttime,Start_time,T_text,T_textRect,bg,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
         gf.eating_food(fruit,ship)
         gf.update_ebullets(enemy_bullet)
