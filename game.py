@@ -49,7 +49,7 @@ def run_game():
     text.append(font.render('Lives', True, (20,80,250)))
     text.append(font.render('Kankaro', True, (200, 00, 60)))
     text.append(font.render('Game Over', True, (200, 00, 60)))
-    text.append(font.render(str(start), True, (200, 00, 60)))
+    
     
     textRect.append(text[0].get_rect())
     textRect[0].center = (100,500)
@@ -57,18 +57,26 @@ def run_game():
     textRect[1].center = (600,25)
     textRect.append(text[2].get_rect())
     textRect[2].center = (450,300)
-    textRect.append(text[3].get_rect())
-    textRect[3].center = (50,50)
-    #Timerrrrrrrr
+       #Timerrrrrrrr
     Ttime=90
     Start_time=time.time()
     T_text=[]
     T_textRect=[]
+    S_text=[]
+    S_textRect=[]
     for i in range(121):
         k=str(i)    #number to string
         T_text.append(font.render(k, True, (20,80,250)))
         T_textRect.append(T_text[i].get_rect())
         T_textRect[i].center = (450,30)
+        '''  S_text.append(T_text[i])
+        S_textRect.append(T_textRect[i])
+        S_textRect[i].center=(80,50) '''
+    for i in range(1000):
+        k=str(i)    #number to string
+        S_text.append(font.render(k, True, (20,80,250)))
+        S_textRect.append(S_text[i].get_rect())
+        S_textRect[i].center = (80,30)
     #gf.text_on_Screen()
     # Set the background color.
     #bg_color = (170,40, 255)
@@ -85,9 +93,9 @@ def run_game():
         gf.update_fruits(fruit)
         gf.update_bullets(aliens,bullets,Bar,ai_settings)            
         gf.update_aliens(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,enemy_bullet,Ttime,Start_time,T_text,T_textRect,bg,ships)
+        gf.update_screen(ai_settings,screen,ship,aliens,bullets,Bar,text, textRect,start,fruit,enemy_bullet,Ttime,Start_time,T_text,T_textRect,bg,S_text,S_textRect,ships)
         gf.destroy_ship_closed_alien(aliens,ship,ai_settings)
-        gf.eating_food(fruit,ship)
+        gf.eating_food(ai_settings,fruit,ship)
         gf.update_ebullets(enemy_bullet)
         #gf.Timer(screen,Ttime,Start_time,T_text,T_textRect)
         #screen.blit(text, textRect)

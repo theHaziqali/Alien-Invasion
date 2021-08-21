@@ -34,4 +34,4 @@ class Status_Bar():
         
         pygame.draw.rect(self.screen, self.color, (self.x,self.y,self.width,self.height))
         pygame.draw.rect(self.screen, (255,255,255), self.rect,4)
-        pygame.draw.rect(self.screen, (190, 110, 255), (self.x,self.dmg_bar_y,self.dmg_taken,self.height-4))
+        pygame.draw.rect(self.screen, (0, 0, 0), (self.x,self.dmg_bar_y,self.dmg_taken,self.height-4))

@@ -38,3 +38,5 @@ class Settings():
         self.ebullet=.1
         #Timer
         self.Tim=0
+        #score
+        self.score=0
