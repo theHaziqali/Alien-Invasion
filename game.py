@@ -100,4 +100,4 @@ def run_game():
         #gf.Timer(screen,Ttime,Start_time,T_text,T_textRect)
         #screen.blit(text, textRect)
     #----------------------------------MAIN--------------------------------------------------------------------------------#
-run_game()
+#run_game()
