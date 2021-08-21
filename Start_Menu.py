@@ -1,3 +1,4 @@
+from Howtoplay import howtoplay
 import pygame,sys
 from pygame.constants import BUTTON_LEFT, BUTTON_X1, MOUSEBUTTONDOWN
 from pygame.sprite import Group
@@ -9,7 +10,7 @@ from StatusBar import Status_Bar
 from Fruits import Fruits
 from enemy_bullets import Enemy_Bullets
 from Background import Background
-from Menu_Background import Menu_Bg
+from Howtoplay import howtoplay
 import time
 import game as g
 pygame.init()
@@ -22,7 +23,8 @@ def Menu():
     # background_image=pygame.image.load(("D:\VS code\.py code\Alien Game\Alien-Invasion\Images\bg.bmp")).convert()
     #screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Alien Invasion")
-    Menu=Menu_Bg(ai_settings,screen)
+    pathimage=r'D:\VS code\.py code\Alien Game\Alien-Invasion\Images\start.bmp'
+    Menu=Background(ai_settings,screen,pathimage)
     text=[]
     textRect=[]
     color= (200,255,255)
@@ -52,16 +54,18 @@ def Menu():
             screen.blit(txt, textRect[i])
             i+=1
         # mouse position
+    
         mx,my=pygame.mouse.get_pos()
         if button_1.collidepoint((mx,my)):
             if click:
                 g.run_game()    
         if button_2.collidepoint((mx,my)):
             if click:
-                pass 
+                howtoplay()
         if button_3.collidepoint((mx,my)):
             if click:
-                pass   
+                pass  
+        click=False 
        #keyboard input
         """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
@@ -74,8 +78,7 @@ def Menu():
                 if event.key == pygame.K_q:
                     sys.exit()
                             
-                if event.key == pygame.K_0:
-                    g.run_game()       
+            
         #Do not write below this line
         pygame.display.flip() 
     #----------------------------------MAIN--------------------------------------------------------------------------------#

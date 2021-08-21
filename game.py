@@ -21,7 +21,8 @@ def run_game():
     #screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Alien Invasion")
     #BackGround
-    bg=Background(ai_settings,screen)
+    pathimage=r'D:\VS code\.py code\Alien Game\Alien-Invasion\Images\bg.bmp'
+    bg=Background(ai_settings,screen,pathimage)
     # Make a ship
     ship=Ship(ai_settings,screen)
     # Make a group to store bullets in.

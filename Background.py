@@ -3,7 +3,7 @@ import random
 from pygame.sprite import Sprite
 
 class Background():
-    def __init__(self,ai_settings,screen):
+    def __init__(self,ai_settings,screen,pathimage):
        
         super(Background, self).__init__()
         self.screen = screen
@@ -11,7 +11,7 @@ class Background():
         # Load the ship image and get its rect.
 
         
-        self.image = pygame.image.load((r'D:\VS code\.py code\Alien Game\Alien-Invasion\Images\bg.bmp'))
+        self.image = pygame.image.load((pathimage))
         self.rect = self.image.get_rect()
         #self.screen_rect = screen.get_rect()
         self.rect.x = 0
