@@ -11,6 +11,7 @@ from Fruits import Fruits
 from enemy_bullets import Enemy_Bullets
 from Background import Background
 from Howtoplay import howtoplay
+from About import About
 import time
 import game as g
 pygame.init()
@@ -64,7 +65,7 @@ def Menu():
                 howtoplay()
         if button_3.collidepoint((mx,my)):
             if click:
-                pass  
+                 About()
         click=False 
        #keyboard input
         """Respond to keypresses and mouse events."""
